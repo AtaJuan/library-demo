@@ -1,0 +1,22 @@
+<html xmlns = "http://www.w3.org/1999/xhtml"   
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Library</title>
+    </h:head>
+
+    <h:body>
+        <p:outputLabel value="Welcome to the Library !" style="font-weight: bold; text-align: center"/>
+        <h:form>
+            <p:menu toggleable="true" >
+                <p:submenu label="Book Configuration">
+                    <p:menuitem value="Go Books" action="book.xhtml" icon="ui-icon-note" />
+                </p:submenu>
+                <p:submenu label="Author Configurations">
+                    <p:menuitem value="Go Authors" action="author.xhtml" ajax="false" icon="ui-icon-star"/>
+                </p:submenu>
+            </p:menu>
+        </h:form>
+    </h:body>
+</html>

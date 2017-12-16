@@ -1,0 +1,110 @@
+<html xmlns = "http://www.w3.org/1999/xhtml"   
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Books</title>
+    </h:head>
+
+    <h:body>
+        <h:form id="form">
+            <p:growl id="bks" showDetail="true" globalOnly="true"/>
+
+            <p:panel id="bookPanel" header="BookOperations" footer="Book Details" 
+                     style="margin-bottom:20px" >
+                <h1>Add a new book</h1>
+
+                <p:panelGrid columns="3" id="bookGrid">
+                    <h:outputLabel style="font-weight: bold">Book id : </h:outputLabel>
+                    <p:inputText id="id" value="#{bookController.book.id}" required="true" 
+                                 requiredMessage="Giriniz!"/>
+                    <p:message for="id" />
+                    
+                    <h:outputLabel style="font-weight: bold">Book name : </h:outputLabel>
+                    <p:inputText  id="name" value="#{bookController.book.name}" required="true" 
+                                  requiredMessage="Giriniz!" />
+                    <p:message for="name" />
+                    
+                    <h:outputLabel style="font-weight: bold">Book isbn : </h:outputLabel>
+                    <p:inputText id="isbn" value="#{bookController.book.isbn}" required="true" 
+                                 requiredMessage="Giriniz!"/>
+                    <p:message for="isbn" />
+                    
+                    <p:outputLabel style="font-weight: bold" for="restricted" value="Book publish date : " />
+                    <p:calendar id="restricted" value="#{bookController.book.publishDate}" required="true"
+                                maxdate="12/6/17"
+                                requiredMessage="Giriniz!"/>
+                    <p:message for="restricted"/>
+                    
+                    <p:outputLabel for="author" style="font-weight: bold" value="Author (If exists) : " />
+                    <p:selectOneMenu id="author" value="#{bookController.book.author}"
+                                     converter="#{authorConverter}"
+                                     label="Author" style="width: 125px" effect="fold"
+                                     filter="true" filterMatchMode="contains" panelStyle="width:250px">
+                        <f:selectItem itemLabel="Select One" itemValue="#{null}"/>
+                        <f:selectItems value="#{bookController.authorList}" var="author"
+                                       itemLabel="#{author.firstName}" itemValue="#{author}"/>
+                    </p:selectOneMenu>
+                    <p:message for="author"/>
+                    
+                </p:panelGrid>
+
+                <br/>
+                <h:commandButton value="Save" action="#{bookController.save}"/>
+                <tab/>
+                <h:commandButton value="Cancel" action="#{bookController.cancel}"/>
+                <br/>
+                <br/>
+
+                <p:dataTable id="bookTable" value="#{bookController.allBooks}" var="book">
+                    <p:ajax event="sort" skipChildren="false"/>
+                    <p:column headerText="Book Id" sortBy="#{book.id}">
+                        <h:outputText value = "#{book.id}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Book Name</f:facet>
+                        <h:outputText value = "#{book.name}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Book ISBN</f:facet>
+                        <h:outputText value = "#{book.isbn}"/>
+                    </p:column>
+
+                    <p:column headerText="Book Publish Date">
+                        <h:outputText value="#{book.publishDate}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column headerText="Book Author">
+                        <h:outputText value="#{book.author.firstName}"/>
+                    </p:column>
+
+                    <p:column id="deleteBtn" headerText="Delete" style="width: 60px; text-align: center">
+                        <p:commandButton icon="ui-icon-trash" title="Click to delete" 
+                                         action="#{bookController.deleteBook(book)}" 
+                                         update=":form:bookTable"
+                                         process="@this">
+                            <p:confirm header="Siliniyor..." message="Emin misiniz?"/>
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column headerText="Edit" style="width: 60px; text-align: center">
+                        <p:commandButton icon="ui-icon-search" title="Click to edit" 
+                                         action ="#{bookController.setBook(book)}" 
+                                         update=":form:bookGrid"
+                                         process="@this"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+            
+            <h:commandButton action="welcome.xhtml" immediate="true" value="Return to Home Page"/>
+        </h:form>
+    </h:body>
+</html>

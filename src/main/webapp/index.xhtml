@@ -1,0 +1,139 @@
+<html xmlns = "http://www.w3.org/1999/xhtml"   
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Home Page</title>
+    </h:head>
+
+    <h:body>
+        <h:form id="form">
+            <p:growl id="bks" showDetail="true" globalOnly="true"/>
+
+            <p:panel id="bookPanel" header="BookOperations" footer="Book Details" style="margin-bottom:20px" >
+                <h1>Add a new book</h1>
+
+                <p:panelGrid columns="3" id="bookGrid">
+                    <h:outputLabel style="font-weight: bold">Book id : </h:outputLabel>
+                    <p:inputText id="id" value="#{bookController.book.id}" required="true" requiredMessage="Giriniz!"/>
+                    <p:message for="id" />
+                    <h:outputLabel style="font-weight: bold">Book name : </h:outputLabel>
+                    <p:inputText  id="name" value="#{bookController.book.name}" required="true" requiredMessage="Giriniz!" />
+                    <p:message for="name" />
+                    <h:outputLabel style="font-weight: bold">Book isbn : </h:outputLabel>
+                    <p:inputText id="isbn" value="#{bookController.book.isbn}" required="true" requiredMessage="Giriniz!"/>
+                    <p:message for="isbn" />
+                    <p:outputLabel style="font-weight: bold" for="restricted" value="Book publish date : " />
+                    <p:calendar id="restricted" value="#{bookController.book.publishDate}" required="true"
+                                maxdate="12/6/17"
+                                requiredMessage="Giriniz!"/>
+                    <p:message for="restricted"/>
+
+                    <p:outputLabel for="author" style="font-weight: bold" value="Author (If exists) : " />
+                    <p:selectOneMenu id="author" value="#{authorController.allAuthors}" 
+                                     label="Authors" style="width: 125px" effect="fold"
+                                     filter="true" filterMatchMode="contains" panelStyle="width:250px">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                        <f:selectItems value="#{authorController.allAuthors}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+
+                <br/>
+                <h:commandButton value="Save" action="#{bookController.save}"/>
+                <br/>
+                <br/>
+
+                <p:dataTable id="bookTable" value="#{bookController.allBooks}" var="book">
+                    <p:column headerText="Book Id" sortBy="#{book.id}">
+                        <h:outputText value = "#{book.id}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Book Name</f:facet>
+                        <h:outputText value = "#{book.name}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Book ISBN</f:facet>
+                        <h:outputText value = "#{book.isbn}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">Book Author</facet>
+                        <h:outputText value="#{book.author}"/>
+                    </p:column>
+
+                    <p:column id="deleteBtn" headerText="Delete" style="width: 60px; text-align: center">
+                        <p:commandButton icon="ui-icon-trash" title="Click to delete" 
+                                         action="#{bookController.deleteBook(book)}" 
+                                         update=":form:bookTable"
+                                         process="@this">
+                            <p:confirm header="Siliniyor..." message="Emin misiniz?" />
+
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column headerText="Edit" style="width: 60px; text-align: center">
+                        <p:commandButton icon="ui-icon-search" title="Click to edit" 
+                                         action ="#{bookController.setBook(book)}" 
+                                         update=":form:bookGrid"
+                                         process="@this"/>
+                    </p:column>
+
+
+                </p:dataTable>
+            </p:panel>
+
+
+            <p:panel id="authorPanel" header="Author Operations" footer="Author Details" 
+                     style="margin-bottom:20px">
+                <h1>Add a new author</h1>
+
+                <h:panelGrid columns="2" border="1">
+                    <h3>Author id : </h3>
+                    <h:inputText value="#{authorController.author.id}" />
+                    <h3>Author name : </h3>
+                    <h:inputText  value="#{authorController.author.firstName}" />
+                    <h3>Author surname : </h3>
+                    <h:inputText value="#{authorController.author.lastName}"/>
+                </h:panelGrid>
+
+                <br/>
+                <h:commandButton value="Add" action="#{authorController.save}"/>
+                <br/>
+                <br/>
+
+                <h:dataTable value="#{authorController.allAuthors}" var="author" border="1">
+                    <h:column>
+                        <f:facet name="header">Author id</f:facet>
+                        <h:outputText value = "#{author.id}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Author Name</f:facet>
+                        <h:outputText value = "#{author.firstName}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Author Surname</f:facet>
+                        <h:outputText value = "#{author.lastName}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Delete Author</f:facet>
+                        <h:commandLink value="Delete" action="#{authorController.deleteAuthor(author)}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header">Edit Book</f:facet>
+                        <h:commandButton value = "Edit" action = "#{authorController.edit(author.id, author.firstName, author.lastName)}"/>
+                    </h:column>
+                </h:dataTable>
+            </p:panel>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+        </h:form>
+    </h:body>
+</html>

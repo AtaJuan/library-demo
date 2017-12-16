@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"   
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Authors</title>
+    </h:head>
+    <h:body>
+        <h:form id="authorForm">
+            <p:panel id="authorPanel" header="Author Operations" footer="Author Details" 
+                     style="margin-bottom:20px">
+                <h1>Add a new author</h1>
+
+                <p:panelGrid columns="3" id="authorGrid" >
+                    <h:outputLabel style="font-weight: bold">Author id : </h:outputLabel>
+                    <p:inputText id="id" value="#{authorController.author.id}" required="true" 
+                                 requiredMessage="Giriniz!"/>
+                    <p:message for="id"/>
+
+                    <h:outputLabel style="font-weight: bold">Author name : </h:outputLabel>
+                    <p:inputText id="name"  value="#{authorController.author.firstName}" 
+                                 required="true" requiredMessage="Giriniz!"/>
+                    <p:message for="name"/>
+
+                    <h:outputLabel style="font-weight: bold">Author lastname : </h:outputLabel>
+                    <p:inputText id="lastname" value="#{authorController.author.lastName}"/>
+                    <p:message for="lastname"/>
+
+                    <h:outputLabel style="font-weight: bold" for="multiple" value="Author Genre:" />
+                    <p:selectCheckboxMenu id="multiple" value="#{authorController.author.genreList}" 
+                                          label="Genre" updateLabel="true"
+                                          filter="true" filterMatchMode="contains" panelStyle="width:250px">
+                        <f:selectItems id="item" value="#{authorController.genreList}"/>
+                    </p:selectCheckboxMenu>
+                    <p:message for="item"/>
+
+                    <p:outputLabel for="nationality" style="font-weight: bold" value="Nation:" />
+                    <p:selectOneMenu id="nationality" value="#{authorController.author.nationality}" 
+                                     label="Nation" style="width: 125px" effect="fold"
+                                     filter="true" filterMatchMode="contains" panelStyle="width:250px">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                        <f:selectItems value="#{authorController.nationalityList}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+
+                <br/>
+                <h:commandButton value="Save" action="#{authorController.save}"/>
+                <tab/>
+                <h:commandButton value="Cancel" action="#{authorController.cancel}"/>
+                <br/>
+                <br/>
+
+                <p:dataTable id="authorTable" value="#{authorController.allAuthors}" var="author" >
+                    <p:column headerText="Author Id" sortBy="#{author.id}">
+                        <h:outputText value = "#{author.id}"/>
+                    </p:column>
+
+                    <p:column headerText="Author Name">
+                        <h:outputText value = "#{author.firstName}"/>
+                    </p:column>
+
+                    <p:column headerText="Author Lastname">
+                        <h:outputText value = "#{author.lastName}"/>
+                    </p:column>
+
+                    <p:column headerText="Author Genre">
+                        <h:outputText value="#{author.genreList}"/>
+                    </p:column>
+
+                    <p:column headerText="Author Nationality">
+                        <h:outputText value="#{author.nationality}"/>
+                    </p:column>
+
+                    <p:column id="deleteBtn" headerText="Delete" style="width: 60px; text-align: center">
+                        <p:commandButton icon="ui-icon-trash" title="Click to delete" 
+                                         action="#{authorController.deleteAuthor(author)}"
+                                         update=":authorForm:authorTable" process="@this">
+                            <p:confirm header="Siliniyor..." message="Emin misiniz?"/>
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column headerText="Edit" style="width: 60px; text-align: center">
+                        <p:commandButton icon="ui-icon-search" title="Click to edit" 
+                                         action ="#{authorController.setAuthor(author)}" 
+                                         update=":authorForm:authorGrid"
+                                         process="@this"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+
+            <h:commandButton action="welcome.xhtml" immediate="true" value="Return to Home Page" />
+        </h:form>
+        
+    </h:body>
+</html>

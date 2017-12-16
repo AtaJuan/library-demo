@@ -1,0 +1,13 @@
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/dao/BookDaoImpl.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/dao/AuthorDaoImpl.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/utility/ApplicationConfiguration.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/dao/BookDao.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/presentation/controller/BookController.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/utility/AuthorConverter.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/presentation/controller/AuthorController.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/presentation/model/Book.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/utility/ViewScope.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/presentation/model/AuthorGenreEnum.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/presentation/model/Author.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/dao/AuthorDao.java
+/Users/atacankullabci/jsf-demo/src/main/java/tr/com/soagen/presentation/model/AuthorNationalityEnum.java

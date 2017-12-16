@@ -1,0 +1,12 @@
+tr/com/soagen/presentation/model/AuthorNationalityEnum.class
+tr/com/soagen/dao/AuthorDao.class
+tr/com/soagen/presentation/model/Author.class
+tr/com/soagen/presentation/controller/BookController.class
+tr/com/soagen/presentation/model/Book.class
+tr/com/soagen/utility/ApplicationConfiguration.class
+tr/com/soagen/presentation/controller/AuthorController.class
+tr/com/soagen/utility/ViewScope.class
+tr/com/soagen/presentation/model/AuthorGenreEnum.class
+tr/com/soagen/dao/AuthorDaoImpl.class
+tr/com/soagen/dao/BookDao.class
+tr/com/soagen/dao/BookDaoImpl.class
