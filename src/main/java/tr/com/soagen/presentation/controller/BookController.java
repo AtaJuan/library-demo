@@ -17,10 +17,13 @@ import tr.com.soagen.presentation.model.Book;
 public class BookController implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Autowired
     private transient BookDao bookDao;
+    
     @Autowired
     private transient AuthorDao authorDao;
+    
     private Book book;
     private List <Author> authorList = new ArrayList<>();
     private boolean creating;

@@ -12,37 +12,37 @@ import org.springframework.stereotype.Repository;
 import tr.com.soagen.presentation.model.Book;
 
 @Repository
-@Qualifier(value="bookDao")
-public class BookDaoImpl implements BookDao{
+@Qualifier(value = "bookDao")
+public class BookDaoImpl implements BookDao {
 
-	@Autowired
-	MongoTemplate mongoTemplate;
-	
-	final String COLLECTION = "books";
-	
-	@Override
-	public void create(Book book) {
-		mongoTemplate.insert(book);
-	}
+    @Autowired
+    MongoTemplate mongoTemplate;
 
-	@Override
-	public void update(Book book) {
-		mongoTemplate.save(book);
-	}
+    final String COLLECTION = "books";
 
-	@Override
-	public void delete(Book book) {
-		mongoTemplate.remove(book);
-	}
+    @Override
+    public void create(Book book) {
+        mongoTemplate.insert(book);
+    }
 
-	@Override
-	public Book getBookById(Book book) {
-		Query query = new Query(Criteria.where("_id").is(book.getId()));
-		return mongoTemplate.findOne(query, Book.class, COLLECTION);
-	}
+    @Override
+    public void update(Book book) {
+        mongoTemplate.save(book);
+    }
 
-	@Override
-	public List<Book> getAllBooks() {
-		return mongoTemplate.findAll(Book.class);
-	}
+    @Override
+    public void delete(Book book) {
+        mongoTemplate.remove(book);
+    }
+
+    @Override
+    public Book getBookById(Book book) {
+        Query query = new Query(Criteria.where("_id").is(book.getId()));
+        return mongoTemplate.findOne(query, Book.class, COLLECTION);
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
+        return mongoTemplate.findAll(Book.class);
+    }
 }

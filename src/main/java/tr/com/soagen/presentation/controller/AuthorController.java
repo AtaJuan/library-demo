@@ -19,9 +19,11 @@ public class AuthorController implements Serializable {
     @Autowired
     private transient AuthorDao authorDao;
     private Author author;
+    
     private List<Author> authorList = new ArrayList<>();
     private List<String> genreList = new ArrayList<>();
     private List<String> nationalityList = new ArrayList<>();
+    
     private boolean created;
 
     @PostConstruct
@@ -69,7 +71,7 @@ public class AuthorController implements Serializable {
         return created;
     }
     
-    public void cancel () {
+    public void cancel() {
         author.setId(null);
         author.setFirstName(null);
         author.setGenreList(null);

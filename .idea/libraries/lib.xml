@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/jsf-api-2.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-context-support-4.3.12.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/jcl-over-slf4j-1.7.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-aop-4.3.12.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/jsf-impl-2.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-beans-4.3.12.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-tx-4.2.8.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-core-4.3.12.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/primefaces-6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/slf4j-api-1.7.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-data-commons-1.12.5.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-expression-4.3.12.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-context-4.3.12.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/mongo-java-driver-2.14.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-web-4.3.12.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/target/jsf-demo-1.0-SNAPSHOT/WEB-INF/lib/spring-data-mongodb-1.9.5.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
